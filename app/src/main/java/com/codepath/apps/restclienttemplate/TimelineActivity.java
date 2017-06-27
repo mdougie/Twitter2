@@ -16,6 +16,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,7 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // TODO error; Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -60,11 +62,31 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     //TODO check for error
+    private final int REQUEST_CODE = 20;
     public void onComposeAction(MenuItem mi) {
         // handle click here
         // first parameter is the context, second is the class of the activity to launch
         Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
-        startActivity(i); // brings up the second activity
+        //TODO check here
+        startActivityForResult(i, REQUEST_CODE); // brings up the second activity
+    }
+
+    //TO DO PART TO TAKE OUT
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check request code and result code first
+        if (resultCode==RESULT_OK && requestCode==REQUEST_CODE){
+            // Use data parameter
+            //Intent i = new Intent();
+            //TODO CHECK HERE - UNWRAP
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+            //Tweet tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
+            //add tweet
+            tweets.add(0, tweet);
+            tweetAdapter.notifyItemInserted(0);
+            rvTweets.scrollToPosition(0);
+        }
     }
 
     private void populateTimeline() {
