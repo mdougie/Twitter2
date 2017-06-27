@@ -22,4 +22,12 @@
         android:text="Tweet"
         android:onClick="composeTweet"/>
 
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonTweet"
+        android:layout_toEndOf="@+id/buttonTweet"
+        android:text="TextView" />
+
 </RelativeLayout>

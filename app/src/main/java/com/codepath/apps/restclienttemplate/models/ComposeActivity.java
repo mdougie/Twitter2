@@ -3,8 +3,11 @@ package com.codepath.apps.restclienttemplate.models;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.TwitterClient;
@@ -21,11 +24,30 @@ import static com.loopj.android.http.AsyncHttpClient.log;
 public class ComposeActivity extends AppCompatActivity {
 
     Tweet tweet;
+    TextView tvCount;
+    EditText etTweet;
+
+    private final TextWatcher mTextEditorWatcher = new TextWatcher() {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            //This sets a textview to the current length
+            tvCount.setText(String.valueOf(140-s.length())+" characters remaining");
+            log.i("count", "entered"+String.valueOf(s.length()));
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
+        tvCount = (TextView) findViewById(R.id.tvCount);
+        etTweet = (EditText) findViewById(R.id.etTweet);
+        etTweet.addTextChangedListener(mTextEditorWatcher);
     }
 
     /** Called when the user touches the button */
@@ -33,7 +55,8 @@ public class ComposeActivity extends AppCompatActivity {
     private final int REQUEST_CODE = 20;
     public void composeTweet(View view) {
         // Do something in response to button click
-        final EditText etTweet = (EditText) findViewById(R.id.etTweet);
+        //etTweet = (EditText) findViewById(R.id.etTweet);
+        //count:
         TwitterClient twitterClient = new TwitterClient(this);
         twitterClient.sendTweet(etTweet.getText().toString(), new JsonHttpResponseHandler() {
             @Override
