@@ -24,9 +24,11 @@ import static com.loopj.android.http.AsyncHttpClient.log;
 public class ComposeActivity extends AppCompatActivity {
 
     Tweet tweet;
+    //count for characters
     TextView tvCount;
     EditText etTweet;
 
+    //display count for characters
     private final TextWatcher mTextEditorWatcher = new TextWatcher() {
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         }

@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/buttonTweet"
         android:layout_toEndOf="@+id/buttonTweet"
-        android:text="TextView" />
+        android:text="140 characters remaining" />
 
 </RelativeLayout>
