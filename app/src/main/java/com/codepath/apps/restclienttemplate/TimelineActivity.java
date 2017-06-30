@@ -30,6 +30,28 @@ public class TimelineActivity extends AppCompatActivity {
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
     SwipeRefreshLayout swipeContainer;
+    //long lowestId;
+    //MenuItem miActionProgressItem;
+
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        // Store instance of the menu item containing progress
+//        miActionProgressItem = menu.findItem(R.id.miActionProgress);
+//        // Extract the action-view from the menu item
+//        ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
+//        // Return to finish
+//        return super.onPrepareOptionsMenu(menu);
+//    }
+//
+//    public void showProgressBar() {
+//        // Show progress item
+//        miActionProgressItem.setVisible(true);
+//    }
+//
+//    public void hideProgressBar() {
+//        // Hide progress item
+//        miActionProgressItem.setVisible(false);
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,6 +65,8 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+        //Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolbar);
 
         //refresh screen
         // Lookup the swipe container view
@@ -71,6 +95,15 @@ public class TimelineActivity extends AppCompatActivity {
 
         //init the arraylist (data source)
         tweets = new ArrayList<>();
+
+        /*
+        //TODO ERROR
+        for(int i=0; i<tweets.size(); i++){
+            if(tweets.get(i).uid <= lowestId){
+                lowestId = tweets.get(i).uid;
+            }
+        }
+        */
 
         //construct the adapter from this data source
         tweetAdapter = new TweetAdapter(tweets);
@@ -123,8 +156,19 @@ public class TimelineActivity extends AppCompatActivity {
                     tweetAdapter.notifyItemInserted(tweets.size()-1);
                 }
                 */
+                //showProgressBar();
                 populateTimeline();
                 swipeContainer.setRefreshing(false);
+                //delay action to show progress bar before it is hidden
+                /*
+                swipeContainer.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // change image
+                        hideProgressBar();
+                    }
+                }, 2000);
+                */
             }
 
             /*

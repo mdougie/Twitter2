@@ -19,11 +19,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/etTweetR"
-        android:text="Tweet"
-        android:onClick="composeTweet"/>
+        android:text="Reply" />
 
     <TextView
-        android:id="@+id/tvCount"
+        android:id="@+id/tvCountR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/buttonReply"

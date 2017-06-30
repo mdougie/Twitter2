@@ -1,8 +1,10 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+
+import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -100,7 +104,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     //create ViewHolder class
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView ivProfileImage;
         public TextView tvUsername;
         public TextView tvBody;
@@ -118,9 +122,28 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             //tvUid = (TextView) itemView.findViewById(R.id.tvUid);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
+            itemView.setOnClickListener(this);
 
         }
 
+        @Override
+        public void onClick(View v) {
+            Log.i("CHECKING", "ONCLICK");
+            //get item position
+            int position = getAdapterPosition();
+            //does position exist in view
+            if (position != RecyclerView.NO_POSITION) {
+                //get tweet at position
+                Log.i("CHECKING", "SUCCESS");
+                Tweet tweet = mTweets.get(position);
+                //create intent for new activity
+                Intent intent = new Intent(context, TweetDetail.class);
+                //serialize movie with parceler
+                intent.putExtra("tweet", Parcels.wrap(tweet));
+                //show activity
+                context.startActivity(intent);
+            }
+        }
     }
 
 

@@ -19,7 +19,8 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
-        android:layout_alignStart="@+id/tvBody" />
+        android:layout_alignStart="@+id/tvBody"
+        android:layout_alignBottom="@+id/tvName" />
 
     <TextView
         android:id="@+id/tvBody"

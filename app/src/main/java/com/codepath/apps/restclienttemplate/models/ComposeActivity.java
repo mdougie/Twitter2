@@ -27,6 +27,29 @@ public class ComposeActivity extends AppCompatActivity {
     //count for characters
     TextView tvCount;
     EditText etTweet;
+    //MenuItem miActionProgressItem;
+
+    /*
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Store instance of the menu item containing progress
+        miActionProgressItem = menu.findItem(R.id.miActionProgress);
+        // Extract the action-view from the menu item
+        ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
+        // Return to finish
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    public void showProgressBar() {
+        // Show progress item
+        miActionProgressItem.setVisible(true);
+    }
+
+    public void hideProgressBar() {
+        // Hide progress item
+        miActionProgressItem.setVisible(false);
+    }
+    */
 
     //display count for characters
     private final TextWatcher mTextEditorWatcher = new TextWatcher() {
@@ -48,14 +71,15 @@ public class ComposeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
         tvCount = (TextView) findViewById(R.id.tvCount);
-        etTweet = (EditText) findViewById(R.id.etTweet);
+        etTweet = (EditText) findViewById(R.id.etTweetR);
         etTweet.addTextChangedListener(mTextEditorWatcher);
     }
 
     /** Called when the user touches the button */
     //TODO PART TO TAKE OUT
     private final int REQUEST_CODE = 20;
-    public void composeTweet(View view) {
+    //TODO take view not final
+    public void composeTweet(final View view) {
         // Do something in response to button click
         //etTweet = (EditText) findViewById(R.id.etTweet);
         //count:
@@ -66,12 +90,24 @@ public class ComposeActivity extends AppCompatActivity {
                 //tweet = null;
                 log.i("check", "success");
                 try {
+                    //progress bar
+                    //showProgressBar();
                     tweet = Tweet.fromJSON(response);
                     //tweet.body = etTweet.getText();
                     //TODO - ERROR HERE
                     Intent intent = new Intent();
                     intent.putExtra("tweet", Parcels.wrap(tweet));
                     setResult(RESULT_OK, intent);
+                    //delay progress bar being hidden so it shows
+                    /*
+                    view.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // change image
+                            hideProgressBar();
+                        }
+                    }, 2000);
+                    */
                     finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
