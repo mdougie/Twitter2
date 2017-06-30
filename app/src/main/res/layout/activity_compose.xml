@@ -10,8 +10,24 @@
         android:id="@+id/etTweetR"
         android:layout_width="384dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/my_toolbar"
+        android:textColorLink="#ff1da1f2"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"></EditText>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#ff1da1f2"
+        android:elevation="4dp"
+        android:subtitleTextColor="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="Compose"
+        app:titleTextColor="@android:color/white" />
 
     <Button
         android:id="@+id/buttonReply"

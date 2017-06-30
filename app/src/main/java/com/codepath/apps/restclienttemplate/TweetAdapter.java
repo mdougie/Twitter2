@@ -64,6 +64,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
 
         Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
+
     }
 
     @Override
@@ -99,10 +100,33 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             e.printStackTrace();
         }
 
-        return relativeDate;
+        String newDate = "";
+        newDate = relativeDate.substring(0, relativeDate.length()-10);
+//        if(relativeDate.substring(relativeDate.length()-12, relativeDate.length()-11).equals("m")){
+//            newDate = relativeDate.substring(0,)
+//        }
+//        if(relativeDate.substring(relativeDate.length()-12, relativeDate.length()-11).equals("s")){
+//
+//        }
+
+        return newDate;
     }
 
-    //create ViewHolder class
+    public String reformatRelativeDate(String relativeDate, String rawDate){
+        String[] parts = relativeDate.split(" ");
+        String[] date = relativeDate.split(" ");
+        if (parts[0].equals("in")){
+            return relativeDate;
+        }else if(parts[1].equals("month") || parts[1].equals("months")){
+            return date[1];
+        }else if (parts[1].equals("year") || parts[1].equals("years")){
+            return date[5];
+        }else{
+            return parts[0]+parts[1].charAt(0);
+        }
+    }
+
+        //create ViewHolder class
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView ivProfileImage;

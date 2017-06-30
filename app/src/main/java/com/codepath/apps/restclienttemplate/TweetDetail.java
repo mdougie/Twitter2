@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.parceler.Parcels;
@@ -18,6 +20,8 @@ public class TweetDetail extends AppCompatActivity {
     Tweet tweet;
     TextView tvTweetDetail;
     Button btReply;
+    TextView tvUsername;
+    ImageView ivProfile;
 
 
     @Override
@@ -26,12 +30,16 @@ public class TweetDetail extends AppCompatActivity {
         setContentView(R.layout.activity_tweet_detail);
         //create view objects
         tvTweetDetail = (TextView) findViewById(R.id.tvTweetDetail);
+        tvUsername = (TextView) findViewById(R.id.tvUsername);
+        ivProfile = (ImageView) findViewById(R.id.ivProfile);
         btReply = (Button) findViewById(R.id.btReply);
         //unwrap movie passed in through intent with simple name
         tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
         Log.d("TweetDetail", String.format("Showing details for '%s'", tweet.body.toString()));
         //set view
         tvTweetDetail.setText(tweet.body);
+        tvUsername.setText(tweet.user.screenName);
+        Glide.with(this).load(tweet.user.profileImageUrl).into(ivProfile);
         btReply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +54,7 @@ public class TweetDetail extends AppCompatActivity {
                 Intent i = new Intent(TweetDetail.this, ReplyActivity.class);
                 i.putExtra("tweet", Parcels.wrap(tweet));
                 startActivityForResult(i, REQUEST_CODE); // brings up the second activity
+                finish();
             }
         });
 

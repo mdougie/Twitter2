@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="Twitter"
+            android:label="Login"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,10 +35,14 @@
         </activity>
         <activity
             android:name=".TimelineActivity"
+            android:label="Home" />
+        <activity android:name=".models.ComposeActivity"
             android:label="Twitter" />
-        <activity android:name=".models.ComposeActivity" />
-        <activity android:name=".TweetDetail" />
-        <activity android:name=".ReplyActivity"></activity>
+        <activity android:name=".TweetDetail"
+            android:label="Twitter"/>
+        <activity android:name=".ReplyActivity"
+            android:label="Twitter"
+            ></activity>
     </application>
 
 </manifest>

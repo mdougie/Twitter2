@@ -10,11 +10,23 @@
         android:id="@+id/tvTweetDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/ivProfile"
+        android:layout_marginLeft="5dp"
         android:text="TextView"
         android:textSize="18sp" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#ff1da1f2"
+        android:elevation="4dp"
+        android:subtitleTextColor="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="Detail"
+        app:titleTextColor="@android:color/white" />
 
     <Button
         android:id="@+id/btReply"
@@ -23,4 +35,22 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvTweetDetail"
         android:text="Reply" />
+
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_margin="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@android:color/black"
+        android:layout_below="@+id/my_toolbar"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivProfile"
+        android:layout_toEndOf="@+id/ivProfile"
+        android:text="TextView" />
+
 </RelativeLayout>
