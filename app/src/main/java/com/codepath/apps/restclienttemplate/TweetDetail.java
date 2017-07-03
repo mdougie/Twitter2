@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class TweetDetail extends AppCompatActivity {
     Button btReply;
     TextView tvUsername;
     ImageView ivProfile;
+    ImageButton btFavorite;
 
 
     @Override
@@ -33,6 +35,7 @@ public class TweetDetail extends AppCompatActivity {
         tvUsername = (TextView) findViewById(R.id.tvUsername);
         ivProfile = (ImageView) findViewById(R.id.ivProfile);
         btReply = (Button) findViewById(R.id.btReply);
+        btFavorite = (ImageButton) findViewById(R.id.btFavorite);
         //unwrap movie passed in through intent with simple name
         tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
         Log.d("TweetDetail", String.format("Showing details for '%s'", tweet.body.toString()));
@@ -57,6 +60,24 @@ public class TweetDetail extends AppCompatActivity {
                 finish();
             }
         });
+        //TODO WHERE I AM CHANGING/ERROR
+//        btFavorite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                favorite(v);
+//                Log.i("ENTERED", "onClick: ENTEREd ONCLICK");
+//            }
+//
+//            //TODO - is error here
+//            int REQUEST_CODE = 20;
+//            public void favorite(View v) {
+//                //TODO - do intent
+//                Intent i = new Intent(TweetDetail.this, FavoriteActivity.class);
+//                i.putExtra("tweet", Parcels.wrap(tweet));
+//                startActivityForResult(i, REQUEST_CODE); // brings up the second activity
+//                finish();
+//            }
+//        });
 
     //TODO - FIND A DIFFERENT WAY TO SEND INFO OR DO SOMETHING TO HAVE IT GO BACK TO TIMELINE INSTEAD OF DETAIL
     }

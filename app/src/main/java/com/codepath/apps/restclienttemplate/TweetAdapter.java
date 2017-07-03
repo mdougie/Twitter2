@@ -29,9 +29,17 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     private List<Tweet> mTweets;
     Context context;
+    private TweetAdapterListener mListener;
+
+    //define an interface required by the ViewHolder
+    public interface TweetAdapterListener {
+        public void onItemSelected(View view, int position);
+    }
+
     //pass in the tweets array in the constructor
-    public TweetAdapter(List<Tweet> tweets) {
+    public TweetAdapter(List<Tweet> tweets, TweetAdapterListener listener) {
         mTweets = tweets;
+        mListener = listener;
     }
 
     //for each row, put the layout and cache references into ViewHolder
@@ -112,19 +120,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         return newDate;
     }
 
-    public String reformatRelativeDate(String relativeDate, String rawDate){
-        String[] parts = relativeDate.split(" ");
-        String[] date = relativeDate.split(" ");
-        if (parts[0].equals("in")){
-            return relativeDate;
-        }else if(parts[1].equals("month") || parts[1].equals("months")){
-            return date[1];
-        }else if (parts[1].equals("year") || parts[1].equals("years")){
-            return date[5];
-        }else{
-            return parts[0]+parts[1].charAt(0);
-        }
-    }
 
         //create ViewHolder class
 
@@ -146,7 +141,18 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             //tvUid = (TextView) itemView.findViewById(R.id.tvUid);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
-            itemView.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if(mListener!=null){
+                        //pos of row element
+                        int position = getAdapterPosition();
+                        //fire listener callback
+                        mListener.onItemSelected(v, position);
+                    }
+                }
+            });
 
         }
 

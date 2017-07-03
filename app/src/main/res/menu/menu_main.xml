@@ -2,12 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/miProfile"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:onClick="onProfileView"
+        android:title="Item"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/miCompose"
         android:icon="@drawable/ic_compose"
         android:onClick="onComposeAction"
-        app:showAsAction="ifRoom"
-        android:title="Compose">
-    </item>
+        android:title="Compose"
+        app:showAsAction="always"></item>
 
     <!--<item-->
         <!--android:id="@+id/miActionProgress"-->

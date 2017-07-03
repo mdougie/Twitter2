@@ -53,4 +53,13 @@
         android:layout_toEndOf="@+id/ivProfile"
         android:text="TextView" />
 
+    <ImageButton
+        android:id="@+id/btFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btReply"
+        android:layout_alignTop="@+id/btReply"
+        android:layout_toEndOf="@+id/tvUsername"
+        app:srcCompat="@android:drawable/btn_star" />
+
 </RelativeLayout>
