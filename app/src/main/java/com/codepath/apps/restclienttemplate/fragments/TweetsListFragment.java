@@ -39,6 +39,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
     SwipeRefreshLayout swipeContainer;
+    String timeline;
 //    private EndlessRecyclerViewScrollListener scrollListener;//    TweetsPagerAdapter pagerAdapter;
 //    ViewPager vPgr;
 //    FragmentManager fragmentManager;
@@ -63,17 +64,20 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
 //                // Make sure you call swipeContainer.setRefreshing(false)
 //                // once the network request has completed successfully.
 //                //TODO - CHANGE SO YOU SOMETIMES GET MENTIONS TIMELINE
-                fetchTimelineAsync(0);
-//                if((pagerAdapter.getItem(vPgr.getCurrentItem())==pagerAdapter.getItem(0))){
-//                    fetchTimelineAsync(0);
-//                    Log.i("DEBUG INFO", "ITEM 0");
-////                Log.i("DEBUG: ITEM", pagerAdapter.getItem)
-//                }
-//                else if ((pagerAdapter.getItem(vPgr.getCurrentItem())==pagerAdapter.getItem(1))){
-//                    fetchTimelineAsync(1);
-//                    Log.i("DEBUG INFO", "ITEM 1");
-//
-//                }
+                //fetchTimelineAsync(0);
+                if(timeline=="Home"){
+                    fetchTimelineAsync(0);
+                    Log.i("DEBUG INFO", "ITEM 0");
+//                Log.i("DEBUG: ITEM", pagerAdapter.getItem)
+                }
+                else if (timeline=="Mentions"){
+                    fetchTimelineAsync(1);
+                    Log.i("DEBUG INFO", "ITEM 1");
+
+                }
+                else{
+                    Log.e("ERROR", "NULL TIMELINE");
+                }
             }
         });
 ////        // Configure the refreshing colors

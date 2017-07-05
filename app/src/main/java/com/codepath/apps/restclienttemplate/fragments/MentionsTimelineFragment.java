@@ -28,6 +28,7 @@ public class MentionsTimelineFragment extends TweetsListFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         client = TwitterApp.getRestClient();
+        super.timeline = "Mentions";
 //        swipeContainer = (SwipeRefreshLayout) getView().findViewById(R.id.swipeContainer);
 //        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
