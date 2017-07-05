@@ -13,6 +13,9 @@ public class TweetsPagerAdapter extends FragmentPagerAdapter {
 
     private String tabTitles[] = new String[] {"Home", "Mentions"};
     private Context context;
+    private HomeTimelineFragment homeTimelineFragment;
+    private MentionsTimelineFragment mentionsTimelineFragment;
+    //int location;
 
     public TweetsPagerAdapter(FragmentManager fm, Context context){
         super(fm);
@@ -31,14 +34,50 @@ public class TweetsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if(position==0){
-            return new HomeTimelineFragment();
+            homeTimelineFragment = getHomeTimeLineFragmentInstance();
+            return homeTimelineFragment;
         }
         else if(position==1){
-            return new MentionsTimelineFragment();
+            mentionsTimelineFragment = getMentionsTimeLineFragmentInstance();
+        return mentionsTimelineFragment;
         }
         else{
             return null;
         }
+//        switch (position){
+//        case 0:
+//            homeTimelineFragment = getHomeTimeLineFragmentInstance();
+//            return homeTimelineFragment;
+//        case 1:
+//            mentionsTimelineFragment = getMentionsTimeLineFragmentInstance();
+//            return mentionsTimelineFragment;
+//        default:
+//            return null;
+//        }
+    }
+
+//    switch (position){
+//        case 0:
+//            homeTimelineFragment = getHomeTimeLineFragment();
+//            return homeTimelineFragment;
+//        case 1:
+//            mentionsTimelineFragment
+//        default:
+//            return null;
+//    }
+//
+    private HomeTimelineFragment getHomeTimeLineFragmentInstance () {
+        if(homeTimelineFragment == null){
+            return new HomeTimelineFragment();
+        }
+        return homeTimelineFragment;
+    }
+
+    private MentionsTimelineFragment getMentionsTimeLineFragmentInstance () {
+        if(mentionsTimelineFragment == null){
+            return new MentionsTimelineFragment();
+        }
+        return mentionsTimelineFragment;
     }
 
     @Override

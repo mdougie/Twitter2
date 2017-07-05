@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--&lt;!&ndash;<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:id="@+id/swipeContainer"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--tools:context="com.codepath.apps.restclienttemplate.TimelineActivity">-->
-
-    <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.codepath.apps.restclienttemplate.TimelineActivity"
-    >
+    tools:context="com.codepath.apps.restclienttemplate.TimelineActivity">
+
+    <!--<RelativeLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/swipeContainer"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.codepath.apps.restclienttemplate.TimelineActivity"-->
+    <!--&gt;-->
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvTweet"
@@ -41,7 +41,7 @@
 
             <!--/>-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
 
-<!--</android.support.v4.widget.SwipeRefreshLayout>-->
+</android.support.v4.widget.SwipeRefreshLayout>

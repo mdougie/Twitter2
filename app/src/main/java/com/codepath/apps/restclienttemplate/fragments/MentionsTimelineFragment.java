@@ -2,6 +2,7 @@ package com.codepath.apps.restclienttemplate.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 
 import com.codepath.apps.restclienttemplate.TwitterApp;
@@ -20,13 +21,33 @@ import cz.msebera.android.httpclient.Header;
 public class MentionsTimelineFragment extends TweetsListFragment {
 
     TwitterClient client; //TODO - make private?
+    SwipeRefreshLayout swipeContainer;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         client = TwitterApp.getRestClient();
+//        swipeContainer = (SwipeRefreshLayout) getView().findViewById(R.id.swipeContainer);
+//        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                // Your code to refresh the list here.
+//                // Make sure you call swipeContainer.setRefreshing(false)
+//                // once the network request has completed successfully.
+//                //TODO - CHANGE SO YOU SOMETIMES GET MENTIONS TIMELINE
+//                fetchTimelineAsync(1);
+//            }
+//        });
+////        // Configure the refreshing colors
+//        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+//                android.R.color.holo_green_light,
+//                android.R.color.holo_orange_light,
+//                android.R.color.holo_red_light);
         populateTimeline();
     }
+
+
 
     private void populateTimeline() {
         client.getMentionsTimeline(new JsonHttpResponseHandler() {

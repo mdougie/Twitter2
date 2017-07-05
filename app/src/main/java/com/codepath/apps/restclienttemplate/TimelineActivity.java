@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.codepath.apps.restclienttemplate.fragments.HomeTimelineFragment;
+import com.codepath.apps.restclienttemplate.fragments.MentionsTimelineFragment;
 import com.codepath.apps.restclienttemplate.fragments.TweetsListFragment;
 import com.codepath.apps.restclienttemplate.fragments.TweetsPagerAdapter;
 import com.codepath.apps.restclienttemplate.models.ComposeActivity;
@@ -19,6 +21,10 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
 
 //    TwitterClient client; //TODO - make private?
     //SwipeRefreshLayout swipeContainer;
+    TweetsPagerAdapter tweetsPagerAdapter;
+    ViewPager vpPager;
+    HomeTimelineFragment homeTimelineFragment;
+    MentionsTimelineFragment mentionsTimelineFragment;
 
     //long lowestId;
     //MenuItem miActionProgressItem;
@@ -70,10 +76,11 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
         setContentView(R.layout.activity_timeline);
 
         //get view pager
-        ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
+        vpPager = (ViewPager) findViewById(R.id.viewpager);
+        tweetsPagerAdapter = new TweetsPagerAdapter(getSupportFragmentManager(), this);
 
         //set adapter for pager
-        vpPager.setAdapter(new TweetsPagerAdapter(getSupportFragmentManager(), this));
+        vpPager.setAdapter(tweetsPagerAdapter);
 
         //setup TabLayout to use vp
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
@@ -201,22 +208,31 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
         startActivity(i);
     }
 
-    //    //TO DO PART TO TAKE OUT
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        // check request code and result code first
-//        if (resultCode==RESULT_OK && requestCode==REQUEST_CODE){
-//            // Use data parameter
-//            //Intent i = new Intent();
-//            //TODO CHECK HERE - UNWRAP
-//            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
-//            //Tweet tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
-//            //add tweet
-//            tweets.add(0, tweet);
+        // TODO ADD THESE IN MAYBE
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check request code and result code first
+        if (resultCode==RESULT_OK && requestCode==REQUEST_CODE){
+            // Use data parameter
+            //Intent i = new Intent();
+            //TODO CHECK HERE - UNWRAP
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+            //Tweet tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
+            //add tweet
+            homeTimelineFragment = (HomeTimelineFragment) tweetsPagerAdapter.getItem(0);
+            vpPager.setCurrentItem(0);
+            homeTimelineFragment.addTweet(tweet);
 //            tweetAdapter.notifyItemInserted(0);
 //            rvTweets.scrollToPosition(0);
-//        }
+//            ((HomeTimelineFragment) pagerAdapter.getItem(vPgr.getCurrentItem())).addTweet(tweet);
+        }
+    }
+
+//    public void addTweet(Tweet tweet){
+//        homeTimelineFragment.(0, tweet);
+//        TweetsPagerAdapter.notifyItemInserted(0);
+//        rvTweets.scrollToPosition(0);
 //    }
 
 //    private void populateTimeline() {
