@@ -38,13 +38,13 @@
             android:label="Twitter" />
         <activity
             android:name=".models.ComposeActivity"
-            android:label="Twitter" />
+            android:label="Compose" />
         <activity
             android:name=".TweetDetail"
-            android:label="Twitter" />
+            android:label="Detail" />
         <activity
-            android:name=".ReplyActivity"
-            android:label="Twitter" />
+            android:name="ReplyActivity"
+            android:label="Reply" />
         <activity android:name=".ProfileActivity"></activity>
     </application>
 
