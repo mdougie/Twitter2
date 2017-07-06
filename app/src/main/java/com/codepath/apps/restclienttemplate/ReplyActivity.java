@@ -64,6 +64,7 @@ public class ReplyActivity extends AppCompatActivity {
         reply = tweet.user.screenName;
         //Log.d("TweetDetail", String.format("Showing details for '%s'", tweet.body.toString()));
         //set view
+        final int REQUEST_CODE = 20;
         buttonReply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

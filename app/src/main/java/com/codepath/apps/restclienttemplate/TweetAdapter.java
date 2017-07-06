@@ -142,39 +142,56 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
             //itemView.setOnClickListener(this);
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    if(mListener!=null){
-                        //pos of row element
-                        int position = getAdapterPosition();
-                        //fire listener callback
-                        mListener.onItemSelected(v, position);
-                    }
-                }
-            });
+            itemView.setOnClickListener(this);
+            ivProfileImage.setOnClickListener(this);
+
+//        @Override
+//        public void onClick(View v) {
+//            Log.i("CHECKING", "ONCLICK");
+//            //get item position
+//            int position = getAdapterPosition();
+//            //does position exist in view
+//            if (position != RecyclerView.NO_POSITION) {
+//                //get tweet at position
+//                Log.i("CHECKING", "SUCCESS");
+//                Tweet tweet = mTweets.get(position);
+//                //create intent for new activity
+//                Intent intent = new Intent(context, TweetDetail.class);
+//                //serialize movie with parceler
+//                intent.putExtra("tweet", Parcels.wrap(tweet));
+//                //show activity
+//                context.startActivity(intent);
+//            }
+//        }
+
 
         }
 
         @Override
-        public void onClick(View v) {
-            Log.i("CHECKING", "ONCLICK");
-            //get item position
-            int position = getAdapterPosition();
-            //does position exist in view
-            if (position != RecyclerView.NO_POSITION) {
-                //get tweet at position
-                Log.i("CHECKING", "SUCCESS");
-                Tweet tweet = mTweets.get(position);
-                //create intent for new activity
-                Intent intent = new Intent(context, TweetDetail.class);
-                //serialize movie with parceler
-                intent.putExtra("tweet", Parcels.wrap(tweet));
-                //show activity
-                context.startActivity(intent);
+            public void onClick(View v) {
+                if (v.getId()==R.id.ivProfileImage) {
+                    //pos of row element
+                    int position = getAdapterPosition();
+                    //fire listener callback
+                    mListener.onItemSelected(v, position);
+                } else if (mListener != null) {
+                    Log.i("CHECKING", "ONCLICK");
+                    //get item position
+                    int position = getAdapterPosition();
+                    //does position exist in view
+                    if (position != RecyclerView.NO_POSITION) {
+                        //get tweet at position
+                        Log.i("CHECKING", "SUCCESS");
+                        Tweet tweet = mTweets.get(position);
+                        //create intent for new activity
+                        Intent intent = new Intent(context, TweetDetail.class);
+                        //serialize movie with parceler
+                        intent.putExtra("tweet", Parcels.wrap(tweet));
+                        //show activity
+                        context.startActivity(intent);
+                    }
+                }
             }
-        }
-
 
     }
 

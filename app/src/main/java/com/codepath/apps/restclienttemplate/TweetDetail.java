@@ -56,6 +56,7 @@ public class TweetDetail extends AppCompatActivity {
                 //TODO - do intent
                 Intent i = new Intent(TweetDetail.this, ReplyActivity.class);
                 i.putExtra("tweet", Parcels.wrap(tweet));
+                i.putExtra("ID", "reply");
                 startActivityForResult(i, REQUEST_CODE); // brings up the second activity
                 finish();
             }

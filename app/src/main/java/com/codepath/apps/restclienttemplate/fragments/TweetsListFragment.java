@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.TweetAdapter;
@@ -40,6 +41,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
     RecyclerView rvTweets;
     SwipeRefreshLayout swipeContainer;
     String timeline;
+    ImageView ivProfileImage;
 //    private EndlessRecyclerViewScrollListener scrollListener;//    TweetsPagerAdapter pagerAdapter;
 //    ViewPager vPgr;
 //    FragmentManager fragmentManager;
