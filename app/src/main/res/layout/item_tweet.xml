@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="5dp"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
 
     <ImageView
         android:id="@+id/ivProfileImage"
@@ -13,40 +14,54 @@
         android:elevation="6dp"
         app:srcCompat="@android:color/black" />
 
-    <TextView
-        android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/ivProfileImage"
-        android:text="TextView"
-        android:layout_alignStart="@+id/tvBody"
-        android:layout_alignBottom="@+id/tvName" />
+        android:layout_toEndOf="@+id/ivProfileImage">
 
-    <TextView
-        android:id="@+id/tvBody"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvUsername"
-        android:layout_marginLeft="5dp"
-        android:layout_toEndOf="@+id/ivProfileImage"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvName"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/tvBody"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/ivProfileImage"
+            android:text="TextView"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tvTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="false"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/tvName"
+            android:text="TextView" />
+
+    </GridLayout>
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@+id/tvUsername"
-        android:text="TextView" />
+        android:layout_below="@+id/gridLayout"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:text="TextView"
+        android:textColor="@android:color/black" />
 
     <TextView
-        android:id="@+id/tvTimestamp"
+        android:id="@+id/tvBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="false"
-        android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@+id/tvName"
-        android:text="TextView" />
+        android:layout_alignStart="@+id/tvName"
+        android:layout_below="@+id/tvName"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textColor="@android:color/black" />
+
 </RelativeLayout>

@@ -108,8 +108,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             e.printStackTrace();
         }
 
-        String newDate = "";
-        newDate = relativeDate.substring(0, relativeDate.length()-10);
+        //String newDate = "";
+        //newDate = relativeDate.substring(0, relativeDate.length()-10);
 //        if(relativeDate.substring(relativeDate.length()-12, relativeDate.length()-11).equals("m")){
 //            newDate = relativeDate.substring(0,)
 //        }
@@ -117,7 +117,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 //
 //        }
 
-        return newDate;
+        return relativeDate;
     }
 
 
