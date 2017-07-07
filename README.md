@@ -1,4 +1,4 @@
-# Project 3 - Twitter1
+# Project 4 - Twitter2
 
 Twitter is an android app that allows a user to view his Twitter timeline and post a new tweet. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
@@ -8,15 +8,18 @@ Time spent: 20 hours spent in total
 
 The following **required** functionality is completed:
 
-* [X]	User can **sign in to Twitter** using OAuth login
-* [X]	User can **view tweets from their home timeline**
-  * [X] User is displayed the username, name, and body for each tweet
-  * [X] User is displayed the [relative timestamp](https://gist.github.com/nesquena/f786232f5ef72f6e10a7) for each tweet "8m", "7h"
-* [X] User can **compose and post a new tweet**
-  * [X] User can click a “Compose” icon in the Action Bar on the top right
-  * [X] User can then enter a new tweet and post this to twitter
-  * [X] User is taken back to home timeline with **new tweet visible** in timeline
-  * [X] Newly created tweet should be manually inserted into the timeline and not rely on a full refresh
+* [X] Includes all required user stories from Twitter Part 1.
+* [X] User can switch between Timeline and Mention views using tabs. (3 points)
+    * [X] User can view their home timeline tweets.
+    * [X] User can view the recent mentions of their username.
+    * [X] User can compose tweets. See this conceptual guide for passing data into a timeline fragment.
+* [X] User can navigate to view their own profile (2 points)
+    * [X] User can see picture, tagline, # of followers, # of following, and tweets on their profile.
+    * [X] The users/verify_credentials endpoint can be used to access this information.
+* [X] User can click on the profile image in any tweet to see another user's profile. (3 points)
+    * [X] User can see picture, tagline, # of followers, # of following, and tweets of clicked user.
+    * [X] Profile view should include that user's timeline
+    * [X] The users/show endpoint can be used to access this information.
 
 The following **optional** features are implemented:
 
@@ -27,8 +30,11 @@ The following **optional** features are implemented:
 * [X] User can **select "reply" from detail view to respond to a tweet**
   * [X] User that wrote the original tweet is **automatically "@" replied in compose**
 * [X] User can tap a tweet to **open a detailed tweet view**
-  * [ ] User can **take favorite (and unfavorite) or reweet** actions on a tweet
+  * [X] User can **take favorite (and unfavorite) or reweet** actions on a tweet
 * [ ] User can **see embedded image media within a tweet** on list or detail view.
+* [ ] User can search for tweets matching a particular query and see results. (1 point)
+* [ ] User can see embedded image media within a tweet on list or detail view. (1 point)
+* [ ] Check the "entities" hash which contains the "media" array of embedded images.
 
 The following **bonus** features are implemented:
 
@@ -47,13 +53,12 @@ The following **bonus** features are implemented:
 The following **additional** features are implemented:
 
 * [ ] List anything else that you can get done to improve the app functionality!
-[X] toolbar instead of actionbar implemented
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/mdougie/Twitter1/blob/master/Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/mdougie/Twitter2/blob/master/Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
